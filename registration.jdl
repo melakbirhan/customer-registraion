@@ -1,0 +1,15 @@
+entity Customer {
+    fullName String
+    customer_id Integer
+    department String
+    genderType Gender
+    telephone String
+    date Instant
+    sessionType Session
+}
+enum Gender {
+    MALE, FEMALE, OTHER
+}
+enum Session {
+    Morning, AfterNoon
+}
