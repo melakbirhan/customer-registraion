@@ -4,8 +4,7 @@ entity Customer {
   department String,
   genderType Gender,
   telephone String,
-  date Instant,
-  session Session
+  date Instant
 }
 
 enum Gender {

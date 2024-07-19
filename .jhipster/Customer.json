@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20240718074317"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "department",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sessionType",
+      "fieldType": "Session",
+      "fieldValues": "Morning,AfterNoon"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Customer",
+  "relationships": [],
+  "searchEngine": "no"
+}

@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-customer-heading" data-cy="CustomerCreateUpdateHeading">Create or edit a Customer</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fullName">Full Name</label>
+          <input type="text" class="form-control" name="fullName" id="field_fullName" data-cy="fullName" formControlName="fullName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_customerId">Customer Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="customerId"
+            id="field_customerId"
+            data-cy="customerId"
+            formControlName="customerId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_department">Department</label>
+          <input
+            type="text"
+            class="form-control"
+            name="department"
+            id="field_department"
+            data-cy="department"
+            formControlName="department"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sessionType">Session Type</label>
+          <select class="form-control" name="sessionType" formControlName="sessionType" id="field_sessionType" data-cy="sessionType">
+            <option [ngValue]="null"></option>
+            @for (session of sessionValues; track $index) {
+              <option [value]="session">{{ { null: '', Morning: 'Morning', AfterNoon: 'AfterNoon' }[session] }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telephone">Telephone</label>
+          <input type="text" class="form-control" name="telephone" id="field_telephone" data-cy="telephone" formControlName="telephone" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_date">Date</label>
+          <div class="d-flex">
+            <div id="field_date" data-cy="date" class="form-control">2024-07-18 12:00</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (customer()) {
+      <div>
+        <h2 data-cy="customerDetailsHeading"><span>Customer</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ customer()!.id }}</span>
+          </dd>
+          <dt><span>Full Name</span></dt>
+          <dd>
+            <span>{{ customer()!.fullName }}</span>
+          </dd>
+          <dt><span>Customer Id</span></dt>
+          <dd>
+            <span>{{ customer()!.customerId }}</span>
+          </dd>
+          <dt><span>Department</span></dt>
+          <dd>
+            <span>{{ customer()!.department }}</span>
+          </dd>
+          <dt><span>Session Type</span></dt>
+          <dd>
+            <span>{{ { null: '', Morning: 'Morning', AfterNoon: 'AfterNoon' }[customer()!.sessionType ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Telephone</span></dt>
+          <dd>
+            <span>{{ customer()!.telephone }}</span>
+          </dd>
+          <dt><span>Date</span></dt>
+          <dd>
+            <span>{{ customer()!.date | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/customer', customer()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
